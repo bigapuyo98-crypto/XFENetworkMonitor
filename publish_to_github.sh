@@ -47,6 +47,10 @@ rm -f ARCHITECTURE_SUMMARY.md
 rm -f INTEGRATION_EXAMPLES.md
 rm -f PUBLISHING_GUIDE.md
 rm -f QUICK_START.md
+rm -f GITHUB_PUBLISH_README.md
+
+# 删除脚本文件
+rm -f publish_to_github.sh
 
 # 删除 CocoaPods 配置
 rm -f XFENetworkMonitor.podspec
@@ -88,8 +92,16 @@ git commit -m "Release ${VERSION} - GitHub 公开版本
 - README.md
 - LICENSE
 - Package.swift
+- .gitattributes
 - Sources/NetworkMonitor/（核心代码）
 - Sources/Examples/（示例代码）
+
+已排除：
+- 内部文档（ARCHITECTURE.md 等）
+- 发布脚本和说明
+- Xcode 项目文件
+- 测试代码
+- CocoaPods 配置
 " || echo "没有需要提交的更改"
 
 # 7. 推送到 GitHub
