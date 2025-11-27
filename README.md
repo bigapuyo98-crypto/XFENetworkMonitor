@@ -29,20 +29,6 @@
 
 ## 📦 安装
 
-### CocoaPods
-
-在你的 `Podfile` 中添加：
-
-```ruby
-pod 'XFENetworkMonitor', '~> 1.0'
-```
-
-然后运行：
-
-```bash
-pod install
-```
-
 ### Swift Package Manager
 
 #### 方式 1：通过 Xcode
@@ -405,11 +391,6 @@ if let assessment = path?.qualityAssessment {
 }
 ```
 
-## 📖 文档
-
-- [完整架构文档](ARCHITECTURE.md)
-- [架构概览](ARCHITECTURE_SUMMARY.md)
-- [用户指南](Sources/docs/USER_GUIDE.md)
 
 ## 🤝 贡献
 
@@ -421,7 +402,7 @@ XFENetworkMonitor 使用 MIT 许可证。详见 [LICENSE](LICENSE) 文件。
 
 ## 👥 作者
 
-XFE Team - xfe@example.com
+XFE
 
 ## 🙏 致谢
 
@@ -429,4 +410,4 @@ XFE Team - xfe@example.com
 
 ---
 
-<p align="center">Made with ❤️ by XFE Team</p>
+<p align="center">Made with by XFE </p>
