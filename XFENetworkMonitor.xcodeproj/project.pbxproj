@@ -6,6 +6,30 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1880D8D92ED7F3CD00BF6014 /* NetworkMonitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8CA2ED7F3CD00BF6014 /* NetworkMonitoring.swift */; };
+		1880D8DB2ED7F3CD00BF6014 /* NetworkMonitorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8C92ED7F3CD00BF6014 /* NetworkMonitorError.swift */; };
+		1880D8DC2ED7F3CD00BF6014 /* NetworkChangeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8CE2ED7F3CD00BF6014 /* NetworkChangeModels.swift */; };
+		1880D8DD2ED7F3CD00BF6014 /* NetworkQualityAssessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8CB2ED7F3CD00BF6014 /* NetworkQualityAssessor.swift */; };
+		1880D8DE2ED7F3CD00BF6014 /* NetworkCallbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8C62ED7F3CD00BF6014 /* NetworkCallbacks.swift */; };
+		1880D8DF2ED7F3CD00BF6014 /* ConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8CD2ED7F3CD00BF6014 /* ConnectionType.swift */; };
+		1880D8E02ED7F3CD00BF6014 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8C82ED7F3CD00BF6014 /* NetworkMonitor.swift */; };
+		1880D8E12ED7F3CD00BF6014 /* NetworkPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8CF2ED7F3CD00BF6014 /* NetworkPath.swift */; };
+		1880D8E22ED7F3CD00BF6014 /* NetworkChangeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8C72ED7F3CD00BF6014 /* NetworkChangeTracker.swift */; };
+		1880D8E32ED7F3CD00BF6014 /* QualityAssessmentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8D12ED7F3CD00BF6014 /* QualityAssessmentModels.swift */; };
+		1880D8E42ED7F3CD00BF6014 /* NetworkQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8D02ED7F3CD00BF6014 /* NetworkQuality.swift */; };
+		1880D8F82ED7FDFE00BF6014 /* NetworkStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8F12ED7FDFE00BF6014 /* NetworkStatusViewController.swift */; };
+		1880D8F92ED7FDFE00BF6014 /* AsyncAwaitExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8EB2ED7FDFE00BF6014 /* AsyncAwaitExample.swift */; };
+		1880D8FA2ED7FDFE00BF6014 /* AdaptiveContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8EE2ED7FDFE00BF6014 /* AdaptiveContentView.swift */; };
+		1880D8FB2ED7FDFE00BF6014 /* OfflineModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8F22ED7FDFE00BF6014 /* OfflineModeViewController.swift */; };
+		1880D8FE2ED7FDFE00BF6014 /* NetworkStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8EF2ED7FDFE00BF6014 /* NetworkStatusView.swift */; };
+		1880D8FF2ED7FDFE00BF6014 /* AdaptiveQualityStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8EA2ED7FDFE00BF6014 /* AdaptiveQualityStrategy.swift */; };
+		1880D9002ED7FDFE00BF6014 /* MultiMonitorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8EC2ED7FDFE00BF6014 /* MultiMonitorCoordinator.swift */; };
+		1880D9012ED7FDFE00BF6014 /* API_REFERENCE.md in Resources */ = {isa = PBXBuildFile; fileRef = 1880D8E72ED7FDFE00BF6014 /* API_REFERENCE.md */; };
+		1880D9022ED7FDFE00BF6014 /* USER_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 1880D8E82ED7FDFE00BF6014 /* USER_GUIDE.md */; };
+		1880D9032ED7FDFE00BF6014 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1880D8F62ED7FDFE00BF6014 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1880D8892ED7EF7000BF6014 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +51,27 @@
 		1880D87B2ED7EF6F00BF6014 /* XFENetworkMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XFENetworkMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1880D8882ED7EF7000BF6014 /* XFENetworkMonitorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XFENetworkMonitorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1880D8922ED7EF7000BF6014 /* XFENetworkMonitorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XFENetworkMonitorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1880D8C62ED7F3CD00BF6014 /* NetworkCallbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCallbacks.swift; sourceTree = "<group>"; };
+		1880D8C72ED7F3CD00BF6014 /* NetworkChangeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkChangeTracker.swift; sourceTree = "<group>"; };
+		1880D8C82ED7F3CD00BF6014 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		1880D8C92ED7F3CD00BF6014 /* NetworkMonitorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorError.swift; sourceTree = "<group>"; };
+		1880D8CA2ED7F3CD00BF6014 /* NetworkMonitoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitoring.swift; sourceTree = "<group>"; };
+		1880D8CB2ED7F3CD00BF6014 /* NetworkQualityAssessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkQualityAssessor.swift; sourceTree = "<group>"; };
+		1880D8CD2ED7F3CD00BF6014 /* ConnectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionType.swift; sourceTree = "<group>"; };
+		1880D8CE2ED7F3CD00BF6014 /* NetworkChangeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkChangeModels.swift; sourceTree = "<group>"; };
+		1880D8CF2ED7F3CD00BF6014 /* NetworkPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPath.swift; sourceTree = "<group>"; };
+		1880D8D02ED7F3CD00BF6014 /* NetworkQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkQuality.swift; sourceTree = "<group>"; };
+		1880D8D12ED7F3CD00BF6014 /* QualityAssessmentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualityAssessmentModels.swift; sourceTree = "<group>"; };
+		1880D8E72ED7FDFE00BF6014 /* API_REFERENCE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = API_REFERENCE.md; sourceTree = "<group>"; };
+		1880D8E82ED7FDFE00BF6014 /* USER_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = USER_GUIDE.md; sourceTree = "<group>"; };
+		1880D8EA2ED7FDFE00BF6014 /* AdaptiveQualityStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveQualityStrategy.swift; sourceTree = "<group>"; };
+		1880D8EB2ED7FDFE00BF6014 /* AsyncAwaitExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAwaitExample.swift; sourceTree = "<group>"; };
+		1880D8EC2ED7FDFE00BF6014 /* MultiMonitorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiMonitorCoordinator.swift; sourceTree = "<group>"; };
+		1880D8EE2ED7FDFE00BF6014 /* AdaptiveContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveContentView.swift; sourceTree = "<group>"; };
+		1880D8EF2ED7FDFE00BF6014 /* NetworkStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusView.swift; sourceTree = "<group>"; };
+		1880D8F12ED7FDFE00BF6014 /* NetworkStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusViewController.swift; sourceTree = "<group>"; };
+		1880D8F22ED7FDFE00BF6014 /* OfflineModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeViewController.swift; sourceTree = "<group>"; };
+		1880D8F62ED7FDFE00BF6014 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +120,7 @@
 		1880D8722ED7EF6F00BF6014 = {
 			isa = PBXGroup;
 			children = (
+				1880D8D82ED7F3CD00BF6014 /* Sources */,
 				1880D87D2ED7EF6F00BF6014 /* XFENetworkMonitor */,
 				1880D88B2ED7EF7000BF6014 /* XFENetworkMonitorTests */,
 				1880D8952ED7EF7000BF6014 /* XFENetworkMonitorUITests */,
@@ -90,6 +136,98 @@
 				1880D8922ED7EF7000BF6014 /* XFENetworkMonitorUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1880D8CC2ED7F3CD00BF6014 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1880D8C62ED7F3CD00BF6014 /* NetworkCallbacks.swift */,
+				1880D8C72ED7F3CD00BF6014 /* NetworkChangeTracker.swift */,
+				1880D8C82ED7F3CD00BF6014 /* NetworkMonitor.swift */,
+				1880D8C92ED7F3CD00BF6014 /* NetworkMonitorError.swift */,
+				1880D8CA2ED7F3CD00BF6014 /* NetworkMonitoring.swift */,
+				1880D8CB2ED7F3CD00BF6014 /* NetworkQualityAssessor.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1880D8D22ED7F3CD00BF6014 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1880D8CD2ED7F3CD00BF6014 /* ConnectionType.swift */,
+				1880D8CE2ED7F3CD00BF6014 /* NetworkChangeModels.swift */,
+				1880D8CF2ED7F3CD00BF6014 /* NetworkPath.swift */,
+				1880D8D02ED7F3CD00BF6014 /* NetworkQuality.swift */,
+				1880D8D12ED7F3CD00BF6014 /* QualityAssessmentModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1880D8D32ED7F3CD00BF6014 /* NetworkMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				1880D8CC2ED7F3CD00BF6014 /* Core */,
+				1880D8D22ED7F3CD00BF6014 /* Models */,
+			);
+			path = NetworkMonitor;
+			sourceTree = "<group>";
+		};
+		1880D8D82ED7F3CD00BF6014 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1880D8E92ED7FDFE00BF6014 /* docs */,
+				1880D8F72ED7FDFE00BF6014 /* Examples */,
+				1880D8D32ED7F3CD00BF6014 /* NetworkMonitor */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		1880D8E92ED7FDFE00BF6014 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				1880D8E72ED7FDFE00BF6014 /* API_REFERENCE.md */,
+				1880D8E82ED7FDFE00BF6014 /* USER_GUIDE.md */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
+		1880D8ED2ED7FDFE00BF6014 /* Advanced */ = {
+			isa = PBXGroup;
+			children = (
+				1880D8EA2ED7FDFE00BF6014 /* AdaptiveQualityStrategy.swift */,
+				1880D8EB2ED7FDFE00BF6014 /* AsyncAwaitExample.swift */,
+				1880D8EC2ED7FDFE00BF6014 /* MultiMonitorCoordinator.swift */,
+			);
+			path = Advanced;
+			sourceTree = "<group>";
+		};
+		1880D8F02ED7FDFE00BF6014 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				1880D8EE2ED7FDFE00BF6014 /* AdaptiveContentView.swift */,
+				1880D8EF2ED7FDFE00BF6014 /* NetworkStatusView.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		1880D8F32ED7FDFE00BF6014 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				1880D8F12ED7FDFE00BF6014 /* NetworkStatusViewController.swift */,
+				1880D8F22ED7FDFE00BF6014 /* OfflineModeViewController.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		1880D8F72ED7FDFE00BF6014 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				1880D8ED2ED7FDFE00BF6014 /* Advanced */,
+				1880D8F02ED7FDFE00BF6014 /* SwiftUI */,
+				1880D8F32ED7FDFE00BF6014 /* UIKit */,
+				1880D8F62ED7FDFE00BF6014 /* README.md */,
+			);
+			path = Examples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +350,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1880D9012ED7FDFE00BF6014 /* API_REFERENCE.md in Resources */,
+				1880D9022ED7FDFE00BF6014 /* USER_GUIDE.md in Resources */,
+				1880D9032ED7FDFE00BF6014 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +377,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1880D8D92ED7F3CD00BF6014 /* NetworkMonitoring.swift in Sources */,
+				1880D8DB2ED7F3CD00BF6014 /* NetworkMonitorError.swift in Sources */,
+				1880D8DC2ED7F3CD00BF6014 /* NetworkChangeModels.swift in Sources */,
+				1880D8DD2ED7F3CD00BF6014 /* NetworkQualityAssessor.swift in Sources */,
+				1880D8DE2ED7F3CD00BF6014 /* NetworkCallbacks.swift in Sources */,
+				1880D8DF2ED7F3CD00BF6014 /* ConnectionType.swift in Sources */,
+				1880D8E02ED7F3CD00BF6014 /* NetworkMonitor.swift in Sources */,
+				1880D8E12ED7F3CD00BF6014 /* NetworkPath.swift in Sources */,
+				1880D8E22ED7F3CD00BF6014 /* NetworkChangeTracker.swift in Sources */,
+				1880D8F82ED7FDFE00BF6014 /* NetworkStatusViewController.swift in Sources */,
+				1880D8F92ED7FDFE00BF6014 /* AsyncAwaitExample.swift in Sources */,
+				1880D8FA2ED7FDFE00BF6014 /* AdaptiveContentView.swift in Sources */,
+				1880D8FB2ED7FDFE00BF6014 /* OfflineModeViewController.swift in Sources */,
+				1880D8FE2ED7FDFE00BF6014 /* NetworkStatusView.swift in Sources */,
+				1880D8FF2ED7FDFE00BF6014 /* AdaptiveQualityStrategy.swift in Sources */,
+				1880D9002ED7FDFE00BF6014 /* MultiMonitorCoordinator.swift in Sources */,
+				1880D8E32ED7F3CD00BF6014 /* QualityAssessmentModels.swift in Sources */,
+				1880D8E42ED7F3CD00BF6014 /* NetworkQuality.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,9 +561,9 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.1;
@@ -414,13 +573,14 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 26.1;
 			};
 			name = Debug;
@@ -444,9 +604,9 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.1;
@@ -456,13 +616,14 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 26.1;
 			};
 			name = Release;
