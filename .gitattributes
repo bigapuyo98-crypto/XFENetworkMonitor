@@ -8,13 +8,7 @@ INTEGRATION_EXAMPLES.md export-ignore
 PUBLISHING_GUIDE.md export-ignore
 QUICK_START.md export-ignore
 
-# 排除脚本文件
-*.sh export-ignore
-fix_package_swift_error.sh export-ignore
-validate.sh export-ignore
-
-# 排除示例代码
-Sources/Examples/ export-ignore
+# 排除文档目录
 Sources/docs/ export-ignore
 
 # 排除测试目录

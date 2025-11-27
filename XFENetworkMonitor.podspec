@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   # 基本信息
   s.name             = 'XFENetworkMonitor'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = '强大的 iOS 网络监控框架，支持实时网络状态监听、质量评估和多种回调机制'
   
   # 详细描述
