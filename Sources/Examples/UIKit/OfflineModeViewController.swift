@@ -83,6 +83,7 @@ class OfflineModeViewController: UIViewController {
         setupUI()
         setupNetworkMonitoring()
         loadContent()
+        monitor.pathUpdateHandler
     }
     
     deinit {

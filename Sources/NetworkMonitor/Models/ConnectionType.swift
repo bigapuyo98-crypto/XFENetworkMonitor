@@ -41,6 +41,7 @@ public extension ConnectionType {
     ///
     /// - Parameter interfaceType: Network framework 的接口类型
     init(from interfaceType: NWInterface.InterfaceType) {
+        
         switch interfaceType {
         case .wifi:
             self = .wifi

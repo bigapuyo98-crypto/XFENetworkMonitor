@@ -135,23 +135,22 @@ public class NetworkMonitor: NetworkMonitoring {
     ///
     /// **使用示例**：
     /// ```swift
-    /// if #available(iOS 13.0, macOS 10.15, *) {
-    ///     NetworkMonitor.shared.pathPublisher
-    ///         .sink { path in
-    ///             print("网络变化: \(path.connectionType)")
-    ///         }
-    ///         .store(in: &cancellables)
-    /// }
+    /// NetworkMonitor.shared.pathPublisher
+    ///     .sink { path in
+    ///         print("网络变化: \(path.connectionType)")
+    ///     }
+    ///     .store(in: &cancellables)
     /// ```
     ///
     /// **可用性**：iOS 13.0+, macOS 10.15+
-    public let pathPublisher: Any = {
-        if #available(iOS 13.0, macOS 10.15, *) {
-            return PassthroughSubject<NetworkPath, Never>()
-        } else {
-            return ()
-        }
-    }()
+    ///
+    /// **Why**: 使用具体类型而非 Any，提供类型安全和编译时检查
+    /// **好处**:
+    /// - 编译器可以推断类型，无需手动转换
+    /// - 支持代码补全和类型检查
+    /// - 避免运行时类型转换错误
+    @available(iOS 13.0, macOS 10.15, *)
+    public let pathPublisher = PassthroughSubject<NetworkPath, Never>()
 
     // MARK: - 代理和观察者
 
@@ -436,10 +435,10 @@ public class NetworkMonitor: NetworkMonitoring {
             self.postNotifications(for: path)
 
             // 5. 发送 Combine 事件
+            // Why: 直接使用 pathPublisher，无需类型转换
+            // 好处: 类型安全，编译时检查，避免运行时错误
             if #available(iOS 13.0, macOS 10.15, *) {
-                if let publisher = self.pathPublisher as? PassthroughSubject<NetworkPath, Never> {
-                    publisher.send(path)
-                }
+                self.pathPublisher.send(path)
             }
         }
     }
@@ -736,9 +735,13 @@ public class NetworkMonitor: NetworkMonitoring {
                 }
 
                 // 清理资源
+                // Why: 使用 @Sendable 闭包确保线程安全，在 onTermination 回调中恢复之前的处理器
+                // Swift 6 并发要求: 内层 Task 必须显式捕获 self，避免隐式捕获导致的并发安全问题
                 continuation.onTermination = { @Sendable [weak self] _ in
-                    Task { @MainActor [previousHandler] in
+                    Task { @MainActor [weak self, previousHandler] in
                         // 恢复之前的处理器
+                        // Why: 显式捕获 [weak self] 符合 Swift 6 并发安全要求
+                        // 好处: 避免循环引用，明确表达对 self 的依赖关系
                         self?.pathUpdateHandler = previousHandler
                     }
                 }

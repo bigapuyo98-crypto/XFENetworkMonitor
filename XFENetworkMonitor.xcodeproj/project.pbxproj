@@ -27,7 +27,12 @@
 		1880D9002ED7FDFE00BF6014 /* MultiMonitorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880D8EC2ED7FDFE00BF6014 /* MultiMonitorCoordinator.swift */; };
 		1880D9012ED7FDFE00BF6014 /* API_REFERENCE.md in Resources */ = {isa = PBXBuildFile; fileRef = 1880D8E72ED7FDFE00BF6014 /* API_REFERENCE.md */; };
 		1880D9022ED7FDFE00BF6014 /* USER_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 1880D8E82ED7FDFE00BF6014 /* USER_GUIDE.md */; };
-		1880D9032ED7FDFE00BF6014 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1880D8F62ED7FDFE00BF6014 /* README.md */; };
+		1880D90C2ED8326A00BF6014 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1880D90A2ED8326A00BF6014 /* README.md */; };
+		1880D90D2ED8326A00BF6014 /* PUBLISHING_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 1880D9092ED8326A00BF6014 /* PUBLISHING_GUIDE.md */; };
+		1880D90E2ED8326A00BF6014 /* INTEGRATION_EXAMPLES.md in Resources */ = {isa = PBXBuildFile; fileRef = 1880D9062ED8326A00BF6014 /* INTEGRATION_EXAMPLES.md */; };
+		1880D90F2ED8326A00BF6014 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1880D9072ED8326A00BF6014 /* LICENSE */; };
+		1880D9102ED8326A00BF6014 /* ARCHITECTURE_SUMMARY.md in Resources */ = {isa = PBXBuildFile; fileRef = 1880D9052ED8326A00BF6014 /* ARCHITECTURE_SUMMARY.md */; };
+		1880D9112ED8326A00BF6014 /* ARCHITECTURE.md in Resources */ = {isa = PBXBuildFile; fileRef = 1880D9042ED8326A00BF6014 /* ARCHITECTURE.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +77,13 @@
 		1880D8F12ED7FDFE00BF6014 /* NetworkStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusViewController.swift; sourceTree = "<group>"; };
 		1880D8F22ED7FDFE00BF6014 /* OfflineModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeViewController.swift; sourceTree = "<group>"; };
 		1880D8F62ED7FDFE00BF6014 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1880D9042ED8326A00BF6014 /* ARCHITECTURE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ARCHITECTURE.md; sourceTree = "<group>"; };
+		1880D9052ED8326A00BF6014 /* ARCHITECTURE_SUMMARY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ARCHITECTURE_SUMMARY.md; sourceTree = "<group>"; };
+		1880D9062ED8326A00BF6014 /* INTEGRATION_EXAMPLES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = INTEGRATION_EXAMPLES.md; sourceTree = "<group>"; };
+		1880D9072ED8326A00BF6014 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		1880D9082ED8326A00BF6014 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		1880D9092ED8326A00BF6014 /* PUBLISHING_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PUBLISHING_GUIDE.md; sourceTree = "<group>"; };
+		1880D90A2ED8326A00BF6014 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -120,6 +132,13 @@
 		1880D8722ED7EF6F00BF6014 = {
 			isa = PBXGroup;
 			children = (
+				1880D9042ED8326A00BF6014 /* ARCHITECTURE.md */,
+				1880D9052ED8326A00BF6014 /* ARCHITECTURE_SUMMARY.md */,
+				1880D9062ED8326A00BF6014 /* INTEGRATION_EXAMPLES.md */,
+				1880D9072ED8326A00BF6014 /* LICENSE */,
+				1880D9082ED8326A00BF6014 /* Package.swift */,
+				1880D9092ED8326A00BF6014 /* PUBLISHING_GUIDE.md */,
+				1880D90A2ED8326A00BF6014 /* README.md */,
 				1880D8D82ED7F3CD00BF6014 /* Sources */,
 				1880D87D2ED7EF6F00BF6014 /* XFENetworkMonitor */,
 				1880D88B2ED7EF7000BF6014 /* XFENetworkMonitorTests */,
@@ -352,7 +371,12 @@
 			files = (
 				1880D9012ED7FDFE00BF6014 /* API_REFERENCE.md in Resources */,
 				1880D9022ED7FDFE00BF6014 /* USER_GUIDE.md in Resources */,
-				1880D9032ED7FDFE00BF6014 /* README.md in Resources */,
+				1880D90C2ED8326A00BF6014 /* README.md in Resources */,
+				1880D90D2ED8326A00BF6014 /* PUBLISHING_GUIDE.md in Resources */,
+				1880D90E2ED8326A00BF6014 /* INTEGRATION_EXAMPLES.md in Resources */,
+				1880D90F2ED8326A00BF6014 /* LICENSE in Resources */,
+				1880D9102ED8326A00BF6014 /* ARCHITECTURE_SUMMARY.md in Resources */,
+				1880D9112ED8326A00BF6014 /* ARCHITECTURE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
