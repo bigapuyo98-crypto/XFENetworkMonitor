@@ -1,0 +1,34 @@
+# Git 属性配置
+# 用于控制哪些文件在 Git archive 时被排除（SPM 使用 archive）
+
+# 排除内部文档（保留 README.md）
+ARCHITECTURE.md export-ignore
+ARCHITECTURE_SUMMARY.md export-ignore
+INTEGRATION_EXAMPLES.md export-ignore
+PUBLISHING_GUIDE.md export-ignore
+QUICK_START.md export-ignore
+
+# 排除脚本文件
+*.sh export-ignore
+fix_package_swift_error.sh export-ignore
+validate.sh export-ignore
+
+# 排除示例代码
+Sources/Examples/ export-ignore
+Sources/docs/ export-ignore
+
+# 排除测试目录
+XFENetworkMonitor/ export-ignore
+XFENetworkMonitorTests/ export-ignore
+XFENetworkMonitorUITests/ export-ignore
+
+# 排除构建产物
+.build/ export-ignore
+*.xcodeproj/project.pbxproj.backup export-ignore
+
+# 排除 Xcode 项目（SPM 不需要）
+XFENetworkMonitor.xcodeproj/ export-ignore
+
+# 排除 CocoaPods 配置（SPM 不需要）
+XFENetworkMonitor.podspec export-ignore
+
