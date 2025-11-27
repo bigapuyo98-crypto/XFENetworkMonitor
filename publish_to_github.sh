@@ -115,6 +115,6 @@ echo -e "${BLUE}📍 GitHub 仓库地址：${NC}"
 echo "   https://github.com/bigapuyo98-crypto/XFENetworkMonitor"
 echo ""
 echo -e "${BLUE}📦 SPM 集成方式：${NC}"
-echo '   .package(url: "https://github.com/bigapuyo98-crypto/XFENetworkMonitor.git", from: "'${VERSION}'")'
+echo '   .package(url: "git@github.com:bigapuyo98-crypto/XFENetworkMonitor.git", from: "'${VERSION}'")'
 echo ""
 

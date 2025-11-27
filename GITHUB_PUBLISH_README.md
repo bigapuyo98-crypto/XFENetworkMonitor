@@ -16,7 +16,7 @@
   - ✅ 开发脚本
 
 ### 🌍 GitHub（公开发布仓库）
-- **地址**: `https://github.com/bigapuyo98-crypto/XFENetworkMonitor.git`
+- **地址**: `git@github.com:bigapuyo98-crypto/XFENetworkMonitor.git`
 - **用途**: 公开发布，供 SPM 集成
 - **内容**（精简版）:
   - ✅ README.md
@@ -142,7 +142,7 @@ git push origin 1.0.2
 // Package.swift
 dependencies: [
     .package(
-        url: "https://github.com/bigapuyo98-crypto/XFENetworkMonitor.git",
+        url: "git@github.com:bigapuyo98-crypto/XFENetworkMonitor.git",
         from: "1.0.1"
     )
 ]
@@ -150,7 +150,7 @@ dependencies: [
 
 或通过 Xcode：
 1. File → Add Package Dependencies...
-2. 输入：`https://github.com/bigapuyo98-crypto/XFENetworkMonitor.git`
+2. 输入：`git@github.com:bigapuyo98-crypto/XFENetworkMonitor.git`
 3. 选择版本
 
 ---
