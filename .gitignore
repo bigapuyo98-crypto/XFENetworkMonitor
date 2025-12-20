@@ -1,0 +1,28 @@
+# 只跟踪 Sources、Package.swift 和 README.md
+# 忽略其他所有内容
+
+# Xcode
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+*.xcuserstate
+DerivedData/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Tests
+Tests/
+
+# IDE/Editor
+.idea/
+.vscode/
+.claude/
+.cursor/
+
+# macOS
+.DS_Store
+*.swp
+*.swo
