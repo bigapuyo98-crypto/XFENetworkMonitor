@@ -19,7 +19,7 @@ Tests/
 # IDE/Editor
 .idea/
 .vscode/
-.claude/
+# .claude/
 .cursor/
 
 # macOS
