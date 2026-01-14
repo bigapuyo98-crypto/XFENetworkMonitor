@@ -23,7 +23,13 @@ import Network
 /// - 值类型确保线程安全
 /// - 轻量级，不需要实例化
 public struct NetworkQualityAssessor {
-    
+
+    // MARK: - Initialization
+
+    /// 公开初始化器
+    /// Why: struct 的默认初始化器是 internal 级别，需要显式声明 public 初始化器
+    public init() {}
+
     // MARK: - Core Assessment Method
     
     /// 评估网络质量
