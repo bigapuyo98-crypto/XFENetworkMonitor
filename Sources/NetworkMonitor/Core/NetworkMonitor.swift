@@ -1,6 +1,6 @@
+import Combine
 import Foundation
 import Network
-import Combine
 
 /// 网络监测器 - 核心网络状态监听类
 ///
@@ -23,9 +23,9 @@ import Combine
 /// - 用户回调切换到主线程执行
 /// - 确保 UI 更新的线程安全
 public class NetworkMonitor: NetworkMonitoring {
-    
+
     // MARK: - 单例
-    
+
     /// 共享实例
     ///
     /// **设计考虑**：
@@ -33,14 +33,14 @@ public class NetworkMonitor: NetworkMonitoring {
     /// - 避免多个监听器同时运行造成资源浪费
     /// - 提供统一的网络状态访问点
     public static let shared = NetworkMonitor()
-    
+
     // MARK: - 私有属性
-    
+
     /// 系统网络路径监听器
     ///
     /// **职责**：实际执行网络状态监听的系统组件
     private let pathMonitor: NWPathMonitor
-    
+
     /// 网络监听专用队列
     ///
     /// **设计目的**：
@@ -48,7 +48,7 @@ public class NetworkMonitor: NetworkMonitoring {
     /// - 提供稳定的回调执行环境
     /// - 使用 utility QoS 平衡性能和电量消耗
     private let monitorQueue: DispatchQueue
-    
+
     /// 当前网络路径（线程安全访问）
     ///
     /// **访问控制**：
@@ -56,14 +56,14 @@ public class NetworkMonitor: NetworkMonitoring {
     /// - 公开 getter 提供只读访问
     /// - 使用队列同步确保线程安全
     private var _currentPath: NetworkPath?
-    
+
     /// 监听状态标记
     ///
     /// **用途**：跟踪监听器的运行状态，避免重复启动
     private var _isMonitoring: Bool = false
-    
+
     // MARK: - 公开属性
-    
+
     /// 当前网络路径（只读）
     ///
     /// **线程安全**：通过队列同步访问确保数据一致性
@@ -71,14 +71,14 @@ public class NetworkMonitor: NetworkMonitoring {
     public var currentPath: NetworkPath? {
         return monitorQueue.sync { _currentPath }
     }
-    
+
     /// 监听状态（只读）
     ///
     /// **用途**：检查监听器是否正在运行
     public var isMonitoring: Bool {
         return monitorQueue.sync { _isMonitoring }
     }
-    
+
     // MARK: - 回调属性
 
     /// 网络路径更新回调
@@ -219,7 +219,7 @@ public class NetworkMonitor: NetworkMonitoring {
     /// - 检测连接类型变化
     /// - 发送变化通知时提供前后对比
     private var previousPath: NetworkPath?
-    
+
     // MARK: - 初始化
 
     /// 内部初始化方法
@@ -254,9 +254,9 @@ public class NetworkMonitor: NetworkMonitoring {
 
         setupPathUpdateHandler()
     }
-    
+
     // MARK: - 核心方法
-    
+
     /// 开始网络监听
     ///
     /// **功能**：启动网络状态监听，开始接收网络变化通知
@@ -305,7 +305,7 @@ public class NetworkMonitor: NetworkMonitoring {
             }
         }
     }
-    
+
     /// 停止网络监听
     ///
     /// **功能**：停止网络状态监听，释放系统资源
@@ -350,9 +350,9 @@ public class NetworkMonitor: NetworkMonitoring {
             }
         }
     }
-    
+
     // MARK: - 私有方法
-    
+
     /// 设置路径更新处理逻辑
     ///
     /// **职责**：配置 NWPathMonitor 的回调处理
@@ -368,7 +368,7 @@ public class NetworkMonitor: NetworkMonitoring {
             self?.handlePathUpdate(nwPath)
         }
     }
-    
+
     /// 处理网络路径更新
     ///
     /// **参数**：系统提供的网络路径信息
@@ -384,22 +384,28 @@ public class NetworkMonitor: NetworkMonitoring {
     private func handlePathUpdate(_ nwPath: NWPath) {
         // 转换为自定义网络路径对象
         let newPath = NetworkPath(nwPath: nwPath)
-        
+
         // 检查是否有实际变化（避免重复通知）
-        let hasChanged = _currentPath != newPath
-        
+        let oldPath = _currentPath
+        let hasChanged = oldPath != newPath
+
         // 更新内部状态
         _currentPath = newPath
-        
-        // 记录状态变化（调试用）
-        print("📡 NetworkMonitor: 网络状态更新 - \(newPath.shortDescription)")
-        
+
+        // 记录状态变化（调试用，仅在变化时打印）
+        #if DEBUG
+            if hasChanged {
+                let oldDesc = oldPath?.shortDescription ?? "未知"
+                print("📡 NetworkMonitor: 网络状态更新 - \(oldDesc) → \(newPath.shortDescription)")
+            }
+        #endif
+
         // 如果有变化，通知用户
         if hasChanged {
             notifyPathUpdate(newPath)
         }
     }
-    
+
     /// 通知网络路径更新
     ///
     /// **职责**：将网络变化通知分发给所有回调机制
@@ -442,7 +448,7 @@ public class NetworkMonitor: NetworkMonitoring {
             }
         }
     }
-    
+
     /// 处理监听错误
     ///
     /// **职责**：处理监听过程中的错误情况
@@ -475,7 +481,7 @@ public class NetworkMonitor: NetworkMonitoring {
             self.delegate?.networkMonitor(self, didEncounterError: error)
         }
     }
-    
+
     // MARK: - 观察者模式支持
 
     /// 添加观察者
@@ -605,7 +611,7 @@ public class NetworkMonitor: NetworkMonitoring {
     private func postNotifications(for path: NetworkPath) {
         var userInfo: [String: Any] = [
             NetworkNotificationKeys.networkPath: path,
-            NetworkNotificationKeys.monitor: self
+            NetworkNotificationKeys.monitor: self,
         ]
 
         // 添加前一个路径信息（如果有）
@@ -626,7 +632,8 @@ public class NetworkMonitor: NetworkMonitoring {
             let isAvailable = path.isNetworkAvailable
 
             if wasAvailable != isAvailable {
-                let notificationName: Notification.Name = isAvailable ? .networkDidBecomeAvailable : .networkDidBecomeUnavailable
+                let notificationName: Notification.Name =
+                    isAvailable ? .networkDidBecomeAvailable : .networkDidBecomeUnavailable
                 NotificationCenter.default.post(
                     name: notificationName,
                     object: self,
@@ -924,7 +931,7 @@ public class NetworkMonitor: NetworkMonitoring {
 
 // MARK: - 便利方法
 
-public extension NetworkMonitor {
+extension NetworkMonitor {
     /// 快速检查网络是否可用
     ///
     /// **用途**：提供简单的网络可用性检查
@@ -938,21 +945,21 @@ public extension NetworkMonitor {
     ///     showOfflineMessage()
     /// }
     /// ```
-    var isNetworkAvailable: Bool {
+    public var isNetworkAvailable: Bool {
         return currentPath?.isNetworkAvailable ?? false
     }
-    
+
     /// 获取当前连接类型
     ///
     /// **返回值**：当前的连接类型，未开始监听时返回 unavailable
-    var connectionType: ConnectionType {
+    public var connectionType: ConnectionType {
         return currentPath?.connectionType ?? .unavailable
     }
-    
+
     /// 获取当前网络质量
     ///
     /// **返回值**：当前的网络质量等级，未开始监听时返回 poor
-    var networkQuality: NetworkQuality {
+    public var networkQuality: NetworkQuality {
         return currentPath?.quality ?? .poor
     }
 }
@@ -960,36 +967,36 @@ public extension NetworkMonitor {
 // MARK: - 调试支持
 
 #if DEBUG
-public extension NetworkMonitor {
-    /// 打印当前网络状态（仅调试版本）
-    ///
-    /// **用途**：开发调试时快速查看网络状态
-    func printCurrentStatus() {
-        guard let path = currentPath else {
-            print("🔍 NetworkMonitor: 未获取到网络状态（可能未开始监听）")
-            return
+    extension NetworkMonitor {
+        /// 打印当前网络状态（仅调试版本）
+        ///
+        /// **用途**：开发调试时快速查看网络状态
+        public func printCurrentStatus() {
+            guard let path = currentPath else {
+                print("🔍 NetworkMonitor: 未获取到网络状态（可能未开始监听）")
+                return
+            }
+
+            print("🔍 NetworkMonitor 当前状态:")
+            print("   连接类型: \(path.connectionType.displayName)")
+            print("   网络质量: \(path.quality.displayName)")
+            print("   是否可用: \(path.isNetworkAvailable ? "是" : "否")")
+            print("   是否昂贵: \(path.isExpensive ? "是" : "否")")
+            print("   是否受限: \(path.isConstrained ? "是" : "否")")
+            print("   详细信息: \(path.detailedDescription)")
         }
-        
-        print("🔍 NetworkMonitor 当前状态:")
-        print("   连接类型: \(path.connectionType.displayName)")
-        print("   网络质量: \(path.quality.displayName)")
-        print("   是否可用: \(path.isNetworkAvailable ? "是" : "否")")
-        print("   是否昂贵: \(path.isExpensive ? "是" : "否")")
-        print("   是否受限: \(path.isConstrained ? "是" : "否")")
-        print("   详细信息: \(path.detailedDescription)")
+
+        /// 模拟网络状态变化（仅调试版本）
+        ///
+        /// **用途**：测试时模拟网络状态变化
+        /// **注意**：仅用于开发测试，不会影响实际网络监听
+        ///
+        /// - Parameter mockPath: 模拟的网络路径
+        public func simulatePathUpdate(_ mockPath: NetworkPath) {
+            print("🎭 NetworkMonitor: 模拟网络状态变化")
+            notifyPathUpdate(mockPath)
+        }
     }
-    
-    /// 模拟网络状态变化（仅调试版本）
-    ///
-    /// **用途**：测试时模拟网络状态变化
-    /// **注意**：仅用于开发测试，不会影响实际网络监听
-    ///
-    /// - Parameter mockPath: 模拟的网络路径
-    func simulatePathUpdate(_ mockPath: NetworkPath) {
-        print("🎭 NetworkMonitor: 模拟网络状态变化")
-        notifyPathUpdate(mockPath)
-    }
-}
 #endif
 
 // MARK: - Singleton Support
@@ -1012,7 +1019,7 @@ public extension NetworkMonitor {
 /// - 避免重复创建监听器实例
 /// - 提供语义化的访问方式
 /// - 支持特定场景的优化
-public extension NetworkMonitor {
+extension NetworkMonitor {
 
     // MARK: - 专用接口类型单例
 
@@ -1045,7 +1052,7 @@ public extension NetworkMonitor {
     ///     }
     /// }
     /// ```
-    static let wifiMonitor: NetworkMonitor = {
+    public static let wifiMonitor: NetworkMonitor = {
         return NetworkMonitor(requiredInterfaceType: .wifi)
     }()
 
@@ -1078,7 +1085,7 @@ public extension NetworkMonitor {
     ///     }
     /// }
     /// ```
-    static let cellularMonitor: NetworkMonitor = {
+    public static let cellularMonitor: NetworkMonitor = {
         return NetworkMonitor(requiredInterfaceType: .cellular)
     }()
 
@@ -1119,7 +1126,7 @@ public extension NetworkMonitor {
     ///
     /// - Parameter interfaceType: 要监听的接口类型
     /// - Returns: 新的监听器实例
-    static func monitor(for interfaceType: NWInterface.InterfaceType) -> NetworkMonitor {
+    public static func monitor(for interfaceType: NWInterface.InterfaceType) -> NetworkMonitor {
         return NetworkMonitor(requiredInterfaceType: interfaceType)
     }
 
@@ -1151,7 +1158,7 @@ public extension NetworkMonitor {
     /// ```
     ///
     /// - Returns: 新的监听器实例
-    static func universalMonitor() -> NetworkMonitor {
+    public static func universalMonitor() -> NetworkMonitor {
         return NetworkMonitor()
     }
 }
@@ -1174,7 +1181,7 @@ public extension NetworkMonitor {
 /// - 代码更简洁
 /// - 意图更清晰
 /// - 减少样板代码
-public extension NetworkMonitor {
+extension NetworkMonitor {
 
     /// 全局网络可用性
     ///
@@ -1195,7 +1202,7 @@ public extension NetworkMonitor {
     ///     showOfflineMessage()
     /// }
     /// ```
-    static var isGlobalNetworkAvailable: Bool {
+    public static var isGlobalNetworkAvailable: Bool {
         return shared.isNetworkAvailable
     }
 
@@ -1221,7 +1228,7 @@ public extension NetworkMonitor {
     ///     showOfflineMode()
     /// }
     /// ```
-    static var globalConnectionType: ConnectionType {
+    public static var globalConnectionType: ConnectionType {
         return shared.connectionType
     }
 
@@ -1247,7 +1254,7 @@ public extension NetworkMonitor {
     ///     enableLowQualityMode()
     /// }
     /// ```
-    static var globalNetworkQuality: NetworkQuality {
+    public static var globalNetworkQuality: NetworkQuality {
         return shared.networkQuality
     }
 }
