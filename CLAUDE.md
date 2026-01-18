@@ -4,7 +4,7 @@
 
 # XFENetworkMonitor 模块
 
-> 最后更新：2025-12-26 09:49:20 +0800
+> 最后更新：2026-01-16
 
 ## 模块职责
 
@@ -20,7 +20,7 @@ XFENetworkMonitor 是**网络监控模块**，提供网络状态监听、质量�
 
 ## 入口与启动
 
-### 1. 基础监控（Combine）
+### 基础监控（Combine）
 
 ```swift
 import XFENetworkMonitor
@@ -37,19 +37,14 @@ class MyViewController: UIViewController {
         monitor.connectionTypePublisher
             .sink { connectionType in
                 switch connectionType {
-                case .wifi:
-                    print("WiFi 连接")
-                case .cellular:
-                    print("蜂窝网络")
-                case .wiredEthernet:
-                    print("有线网络")
-                case .unknown:
-                    print("未知网络")
+                case .wifi: print("WiFi 连接")
+                case .cellular: print("蜂窝网络")
+                case .wiredEthernet: print("有线网络")
+                case .unknown: print("未知网络")
                 }
             }
             .store(in: &cancellables)
 
-        // 启动监控
         monitor.start()
     }
 
@@ -59,25 +54,18 @@ class MyViewController: UIViewController {
 }
 ```
 
-### 2. 网络质量评估
+### 网络质量评估
 
 ```swift
-import XFENetworkMonitor
-
 let assessor = NetworkQualityAssessor()
 
-// 订阅质量变化
 assessor.qualityPublisher
     .sink { quality in
         switch quality {
-        case .excellent:
-            print("网络质量：优秀")
-        case .good:
-            print("网络质量：良好")
-        case .fair:
-            print("网络质量：一般")
-        case .poor:
-            print("网络质量：差")
+        case .excellent: print("网络质量：优秀")
+        case .good: print("网络质量：良好")
+        case .fair: print("网络质量：一般")
+        case .poor: print("网络质量：差")
         }
     }
     .store(in: &cancellables)
@@ -85,7 +73,7 @@ assessor.qualityPublisher
 assessor.start()
 ```
 
-### 3. 回调方式（不使用 Combine）
+### 回调方式（不使用 Combine）
 
 ```swift
 let monitor = NetworkMonitor()
@@ -107,45 +95,25 @@ monitor.start()
 
 ### NetworkMonitor - 网络监控器
 
-```swift
-public class NetworkMonitor {
-    // 初始化
-    public init()
-
-    // 启动/停止监控
-    public func start()
-    public func stop()
-
-    // Combine Publishers
-    public var connectionTypePublisher: AnyPublisher<ConnectionType, Never>
-    public var isConnectedPublisher: AnyPublisher<Bool, Never>
-
-    // 回调方式
-    public var onConnectionChanged: ((ConnectionType) -> Void)?
-    public var onQualityChanged: ((NetworkQuality) -> Void)?
-
-    // 当前状态
-    public var currentConnectionType: ConnectionType { get }
-    public var isConnected: Bool { get }
-}
-```
+| 方法/属性 | 说明 |
+|----------|------|
+| `init()` | 初始化监控器 |
+| `start()` / `stop()` | 启动/停止监控 |
+| `connectionTypePublisher` | Combine Publisher（连接类型） |
+| `isConnectedPublisher` | Combine Publisher（是否连接） |
+| `onConnectionChanged` | 回调方式（连接变更） |
+| `onQualityChanged` | 回调方式（质量变更） |
+| `currentConnectionType` | 当前连接类型 |
+| `isConnected` | 是否已连接 |
 
 ### NetworkQualityAssessor - 网络质量评估器
 
-```swift
-public class NetworkQualityAssessor {
-    public init()
-
-    public func start()
-    public func stop()
-
-    // Combine Publisher
-    public var qualityPublisher: AnyPublisher<NetworkQuality, Never>
-
-    // 当前质量
-    public var currentQuality: NetworkQuality { get }
-}
-```
+| 方法/属性 | 说明 |
+|----------|------|
+| `init()` | 初始化评估器 |
+| `start()` / `stop()` | 启动/停止评估 |
+| `qualityPublisher` | Combine Publisher（质量） |
+| `currentQuality` | 当前质量 |
 
 ### 枚举类型
 
@@ -248,12 +216,8 @@ struct ContentView: View {
                     print("网络变更: \(connectionType)")
                 }
         }
-        .onAppear {
-            monitor.start()
-        }
-        .onDisappear {
-            monitor.stop()
-        }
+        .onAppear { monitor.start() }
+        .onDisappear { monitor.stop() }
     }
 }
 ```
@@ -261,81 +225,49 @@ struct ContentView: View {
 ### Q2: 如何实现离线模式？
 
 ```swift
-import XFENetworkMonitor
-
-class OfflineModeViewController: UIViewController {
-    private let monitor = NetworkMonitor()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        monitor.isConnectedPublisher
-            .sink { isConnected in
-                if isConnected {
-                    self.enableOnlineMode()
-                } else {
-                    self.enableOfflineMode()
-                }
-            }
-            .store(in: &cancellables)
-
-        monitor.start()
+monitor.isConnectedPublisher
+    .sink { isConnected in
+        if isConnected {
+            self.enableOnlineMode()
+        } else {
+            self.enableOfflineMode()
+        }
     }
-
-    private func enableOnlineMode() {
-        print("切换到在线模式")
-    }
-
-    private func enableOfflineMode() {
-        print("切换到离线模式")
-    }
-}
+    .store(in: &cancellables)
 ```
 
 ### Q3: 如何根据网络质量调整行为？
 
 ```swift
-import XFENetworkMonitor
-
-class AdaptiveQualityStrategy {
-    private let assessor = NetworkQualityAssessor()
-
-    func start() {
-        assessor.qualityPublisher
-            .sink { quality in
-                switch quality {
-                case .excellent, .good:
-                    self.loadHighQualityImages()
-                case .fair:
-                    self.loadMediumQualityImages()
-                case .poor:
-                    self.loadLowQualityImages()
-                }
-            }
-            .store(in: &cancellables)
-
-        assessor.start()
+assessor.qualityPublisher
+    .sink { quality in
+        switch quality {
+        case .excellent, .good:
+            self.loadHighQualityImages()
+        case .fair:
+            self.loadMediumQualityImages()
+        case .poor:
+            self.loadLowQualityImages()
+        }
     }
-}
+    .store(in: &cancellables)
 ```
 
 ---
 
-## 相关文件清单
-
-### 核心目录结构
+## 目录结构
 
 ```
 XFENetworkMonitor/
 ├── Sources/
 │   ├── NetworkMonitor/
-│   │   ├── Core/
+│   │   ├── Core/                              # 核心组件 (5 文件)
 │   │   │   ├── NetworkMonitor.swift           # 主监控器
 │   │   │   ├── NetworkQualityAssessor.swift   # 质量评估器
 │   │   │   ├── NetworkChangeTracker.swift     # 变化追踪器
 │   │   │   ├── NetworkCallbacks.swift         # 回调定义
 │   │   │   └── NetworkMonitorError.swift      # 错误定义
-│   │   └── Models/
+│   │   └── Models/                            # 数据模型 (5 文件)
 │   │       ├── ConnectionType.swift           # 连接类型
 │   │       ├── NetworkQuality.swift           # 网络质量
 │   │       ├── NetworkPath.swift              # 网络路径
@@ -364,10 +296,14 @@ XFENetworkMonitor/
 
 ## 变更记录 (Changelog)
 
+### 2026-01-16
+- 文档优化：从 376 行压缩到 300 行以内
+- 压缩入口示例、API 接口、FAQ
+- 简化目录结构
+
 ### 2025-12-26
 - 初始化模块文档
 - 完善公共 API 说明
-- 添加使用示例和常见问题
 
 ---
 
