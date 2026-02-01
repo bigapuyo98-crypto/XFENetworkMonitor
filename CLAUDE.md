@@ -10,6 +10,17 @@
 
 XFENetworkMonitor 是**网络监控模块**，提供网络状态监听、质量评估和变化追踪功能，支持 SwiftUI 和 UIKit。
 
+**边界说明**：
+- 仅输出网络信号，不包含任何业务层“门禁/降级/重试/文案”等决策逻辑；业务策略应放在各自业务模块内。
+
+## 与业务门禁的协作方式（推荐）
+
+- 本模块输出：`NetworkMonitor` 的网络快照/质量/路径属性（如 `NetworkQuality`、`isConstrained/isExpensive`）。
+- 业务模块（如 `DBMutualAid`）应在业务侧实现：
+  - `*NetworkSnapshot`：把 `NetworkMonitor` 输入归一化为业务可用的值类型快照
+  - `*NetworkGatingPolicy`：纯函数策略（snapshot + context → matrix）
+  - `*NetworkGatingProvider`：信号桥接（Combine→Rx 或 Concurrency→Rx），不承载业务规则
+
 **核心功能**：
 - 网络状态监控（WiFi、蜂窝、离线）
 - 网络质量评估（优秀、良好、一般、差）
